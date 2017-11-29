@@ -13,3 +13,9 @@ session:
 
 services:
 	router: App\RouterFactory::createRouter
+
+	# components
+	- ChatApp\Components\IChatControlFactory
+	- ChatApp\Components\IChatConversationControlFactory
+	- ChatApp\Components\IChatWindowControlFactory
+	- ChatApp\Components\IChatSendFormFactory
