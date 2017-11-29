@@ -24,8 +24,17 @@ class BasePresenter extends Nette\Application\UI\Presenter
 
     private $userId = null;
 
+    private $conversationId = null;
+
     public function __construct( ) {
         parent::__construct();
+    }
+
+    /**
+     * @return null
+     */
+    public function getConversationId () {
+        return $this->conversationId;
     }
 
     protected function beforeRender() {
@@ -50,4 +59,10 @@ class BasePresenter extends Nette\Application\UI\Presenter
         $connection->registerFilter('pagination', array('Model\Filter\CommonFilter', 'pagination'));
         $this->connection = $connection;
     }
+
+    public function handleSwitchConversation( $conversationId ) {
+        bdump($conversationId);
+        $this->conversationId = (int) $conversationId;
+    }
+
 }

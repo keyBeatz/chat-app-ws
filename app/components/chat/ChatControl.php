@@ -25,6 +25,8 @@ class ChatControl extends Control {
 
     private $currentUserId;
 
+    private $conversationId;
+
     /**
      * ChatControl constructor.
      *
@@ -47,7 +49,7 @@ class ChatControl extends Control {
      * @return ChatConversationControl
      */
     protected function createComponentConversations(): ChatConversationControl {
-        return $this->chatConversationControl->create( $this->userConversations, $this->currentUserId );
+        return $this->chatConversationControl->create( $this->userConversations, $this->currentUserId, $this->conversationId );
     }
 
     /**
@@ -55,8 +57,18 @@ class ChatControl extends Control {
      */
     protected function createComponentWindow(): ChatWindowControl {
         $conversation = null;
+
         if( count($this->userConversations) ) {
-            $conversation = reset( $this->userConversations );
+            // if conversationId is set then choose it as active. Otherwise choose first (the newest) as active
+            if( $this->conversationId !== null ) {
+                $defaultConversation = array_filter( $this->userConversations, function( $conv ) {
+                    return $conv->conversation->id === (int) $this->conversationId;
+                });
+                $conversation = count( $defaultConversation ) ? reset( $defaultConversation ) : null;
+            }
+            if( $conversation === null ) {
+                $conversation = reset( $this->userConversations );
+            }
         }
 
         return $this->chatWindowsControl->create( $conversation, $this->currentUserId );
@@ -64,6 +76,7 @@ class ChatControl extends Control {
 
     protected function attached( $presenter ) {
         $this->currentUserId = $presenter->getUserId();
+        $this->conversationId = $presenter->getConversationId();
         $this->userConversations = $this->conversationQuery->getUserConversations( $this->currentUserId );
     }
 
@@ -76,6 +89,10 @@ class ChatControl extends Control {
 
         $template->setFile( __DIR__ . '/templates/ChatControl.latte' );
         $template->render();
+    }
+
+    public function handleSwitchConversation( $conversationId ) {
+        bdump($conversationId);
     }
 
 }

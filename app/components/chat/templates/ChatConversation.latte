@@ -1,7 +1,10 @@
 <div class="chatConversations">
     <ul n:if="$conversations" n:inner-foreach="$conversations as $conversation">
-        <li>
-            {$conversation->conversation->lastMessage->text}
+        {dump $activeConversationId}
+        <li n:class="$activeConversationId == $conversation->conversation->id ? active, !$activeConversationId && $iterartor->isFirst() ? active">
+            <a href="{plink switchConversation! conversationId => $conversation->conversation->id}">
+                {$conversation->conversation->lastMessage->text}
+            </a>
         </li>
     </ul>
 </div>
