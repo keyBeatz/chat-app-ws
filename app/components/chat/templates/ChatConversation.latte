@@ -2,7 +2,10 @@
     <ul n:if="$conversations" n:inner-foreach="$conversations as $conversation">
         <li n:class="$activeConversationId == $conversation->conversation->id ? active, !$activeConversationId && $iterartor->isFirst() ? active, conversation" data-conversation_id="{$conversation->conversation->id}">
             <a href="{plink switchConversation! conversationId => $conversation->conversation->id}">
-                {$conversation->conversation->lastMessage->text}
+                <div class="avatar"></div>
+                <span class="lastMessageText">
+                    {$conversation->conversation->lastMessage->text}
+                </span>
             </a>
         </li>
     </ul>

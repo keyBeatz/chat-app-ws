@@ -49,7 +49,9 @@ class ConversationCommand {
 
         $result = $this->messageRepository->persist( $message );
 
-        
+        if( !$result ) {
+            throw new \RuntimeException( "Message persist action failed." );
+        }
     }
 
 }

@@ -6,7 +6,7 @@ use Ratchet\ConnectionInterface;
 
 /**
  * Interface IController
- * @package AllStars\WebSockets
+ * @package ChatApp\WebSockets
  */
 interface IController {
     public function call( IClientConnection $from, array $data );

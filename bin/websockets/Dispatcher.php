@@ -8,7 +8,7 @@ use Ratchet\ConnectionInterface;
 
 /**
  * Class Dispatcher
- * @package AllStars\WebSockets
+ * @package ChatApp\WebSockets
  */
 class Dispatcher implements MessageComponentInterface {
 
@@ -86,6 +86,9 @@ class Dispatcher implements MessageComponentInterface {
         $connection->close();
     }
 
+    /**
+     * @param IClientConnection $client
+     */
     protected function sendInitMessage( IClientConnection $client ) : void {
         $this->controller->sendResponse( $client, [
             'action' => 'init',

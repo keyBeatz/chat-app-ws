@@ -2,19 +2,29 @@
   background: #eee;
   position: relative;
   height: 500px;
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+  border-radius: 3px;
+  overflow: hidden; }
   #chat .chatConversations {
     background: #dcdcdc;
     height: 500px; }
     #chat .chatConversations > ul {
       list-style: none;
       margin-bottom: 0;
-      padding-left: 0; }
-      #chat .chatConversations > ul > li {
+      padding-left: 0;
+      overflow-y: auto;
+      height: 100%; }
+      #chat .chatConversations > ul > li > a {
         padding: 25px 10px;
-        border-bottom: 1px solid #ccc; }
-        #chat .chatConversations > ul > li.active {
-          background: #ccc; }
+        padding-left: 75px;
+        border-bottom: 1px solid #ccc;
+        display: block;
+        position: relative;
+        color: #484848;
+        text-decoration: none; }
+      #chat .chatConversations > ul > li.active a, #chat .chatConversations > ul > li:hover:not(.active) a {
+        background: #ccc;
+        font-weight: bold; }
   #chat .chatWindow ul.chatMessages {
     list-style: none;
     margin-bottom: 0;
@@ -62,5 +72,16 @@
   padding-right: 0; }
 .nopad:last-child {
   padding-left: 0; }
+
+.avatar {
+  background: #b5b5b5;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  bottom: 0;
+  margin: auto; }
 
 /*# sourceMappingURL=style.css.map */

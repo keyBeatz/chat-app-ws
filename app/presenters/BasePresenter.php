@@ -22,7 +22,11 @@ class BasePresenter extends Nette\Application\UI\Presenter
      */
     protected $connection;
 
-    private $userId = null;
+    /**
+     * @var $userId
+     * @persistent
+     */
+    public $userId = 7;
 
     private $conversationId = null;
 
@@ -39,7 +43,7 @@ class BasePresenter extends Nette\Application\UI\Presenter
 
     protected function beforeRender() {
         parent::beforeRender();
-        $this->userId = $this->getParameter( "id" ) ?? 7;
+        //$this->userId = $this->getParameter( "id" ) ?? 7;
     }
 
     /**
@@ -61,7 +65,6 @@ class BasePresenter extends Nette\Application\UI\Presenter
     }
 
     public function handleSwitchConversation( $conversationId ) {
-        bdump($conversationId);
         $this->conversationId = (int) $conversationId;
     }
 

@@ -10,7 +10,7 @@ use React\EventLoop\LoopInterface;
 
 /**
  * Class Client
- * @package AllStars\WebSockets
+ * @package ChatApp\WebSockets
  */
 class Client implements IClientConnection {
 

@@ -11,16 +11,17 @@ use Nette\Application\LinkGenerator;
 use ChatApp\WebSockets\Exceptions\ControllerRuntimeException;
 use Ratchet\ConnectionInterface;
 use React\EventLoop\LoopInterface;
+use Tracy\Debugger;
 
 /**
  * Class Controller
- * @package AllStars\WebSockets
+ * @package ChatApp\WebSockets
  */
 class Controller implements IController, IControllerLoop {
 
     use ControllerHelperTrait;
 
-    const TIMER_SEC = 3;
+    const TIMER_SEC = 1;
     /**
      * @var ConversationQuery
      */
@@ -53,6 +54,10 @@ class Controller implements IController, IControllerLoop {
         $this->sendResponse( $client, [ "data" => count( $this->clients ), "user_id" => $userConnection->getUserId()] );
     }
 
+    /**
+     * @param IClientConnection $client
+     * @param array $data
+     */
     public function actionSendMessage( IClientConnection $client, array $data ) {
         $userConnection = $this->clients->getClientByConnection( $client );
         $userId = $userConnection->getUserId();
@@ -61,14 +66,20 @@ class Controller implements IController, IControllerLoop {
 
         if( $userId && $conversationId && $message ) {
             var_dump($message);
-            $this->conversationCommand->addMessage( $conversationId, $userId, $message );
+
+            try {
+                $this->conversationCommand->addMessage( $conversationId, $userId, $message );
+            }
+            catch( \Exception $e ) {
+                Debugger::log( $e->getMessage() );
+            }
         }
-        print json_encode($data);
-
-
-        $this->sendResponse( $client, [ "data" => count( $this->clients ), "user_id" => $userConnection->getUserId()] );
     }
 
+    /**
+     * @param IClientConnection $client
+     * @param array $data
+     */
     public function actionInit( IClientConnection $client, array $data ) {
         $userId = $data['data']['user_id'] ?? 0;
 
@@ -101,6 +112,9 @@ class Controller implements IController, IControllerLoop {
         }
     }*/
 
+    /**
+     * @param ClientCollection $clientCollection
+     */
     private function loopReceiveMessage( ClientCollection $clientCollection ) {
         echo "loopTest inited\n";
         echo "Clients: " . count( $clientCollection->getClients() );

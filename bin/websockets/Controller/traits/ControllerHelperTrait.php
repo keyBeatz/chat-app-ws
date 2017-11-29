@@ -8,7 +8,7 @@ use React\EventLoop\LoopInterface;
 
 /**
  * Trait ControllerHelperTrait
- * @package AllStars\WebSockets
+ * @package ChatApp\WebSockets
  */
 trait ControllerHelperTrait {
 

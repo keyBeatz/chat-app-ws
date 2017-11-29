@@ -63,7 +63,7 @@ var App = (function() {
                 $("#chatWindow-" + i).html( template.html() );
                 self.scrollChatWindow();
 
-                self.wrap.find( ".chatConversations li[data-conversation_id='"+ i +"'] > a" ).text( template.find("li:last-child").text() );
+                self.wrap.find( ".chatConversations li[data-conversation_id='"+ i +"'] .lastMessageText" ).text( template.find("li:last-child").text() );
             });
             console.log(e);
             //console.log(data);
