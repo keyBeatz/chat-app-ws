@@ -4,6 +4,13 @@
 	"keywords": ["nette"],
 	"type": "project",
 	"license": ["MIT", "BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+    "repositories":
+    [
+      {
+        "type": "vcs",
+        "url": "https://github.com/keyBeatz/LeanMapper.git"
+      }
+    ],
 	"require": {
 		"php": ">= 5.6",
 		"nette/application": "^2.4",
@@ -21,7 +28,7 @@
 		"latte/latte": "^2.4",
 		"tracy/tracy": "^2.4",
 		"cboden/ratchet": "^0.4.0",
-		"tharos/leanmapper": "^3.1"
+		"tharos/leanmapper": "dev-fix-union"
 	},
 	"require-dev": {
 		"nette/tester": "^2.0"

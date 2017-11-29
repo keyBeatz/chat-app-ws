@@ -1,3 +1,8 @@
 <div class="chatWindow">
-    window
+    <ul n:if="$conversation" class="chatMessages">
+        <li n:foreach="$conversation->conversation->messages as $message" n:class="$currentUserId !== $message->userId ? right">
+            {$message->text}
+        </li>
+    </ul>
+    {control sendForm}
 </div>

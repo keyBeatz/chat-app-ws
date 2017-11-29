@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e39ce54a2e6335c7dfc06a8ae1876d3e",
+    "content-hash": "7433fd1811dfa58e446bca9d7c3f380c",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -476,16 +476,16 @@
         },
         {
             "name": "nette/caching",
-            "version": "v2.5.5",
+            "version": "v2.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/caching.git",
-                "reference": "997d3b9868840da8b51f27565bfe1a8210e94620"
+                "reference": "1231735b5135ca02bd381b70482c052d2a90bdc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/caching/zipball/997d3b9868840da8b51f27565bfe1a8210e94620",
-                "reference": "997d3b9868840da8b51f27565bfe1a8210e94620",
+                "url": "https://api.github.com/repos/nette/caching/zipball/1231735b5135ca02bd381b70482c052d2a90bdc9",
+                "reference": "1231735b5135ca02bd381b70482c052d2a90bdc9",
                 "shasum": ""
             },
             "require": {
@@ -541,7 +541,7 @@
                 "nette",
                 "sqlite"
             ],
-            "time": "2017-08-18T15:20:18+00:00"
+            "time": "2017-08-30T12:12:25+00:00"
         },
         {
             "name": "nette/component-model",
@@ -674,16 +674,16 @@
         },
         {
             "name": "nette/di",
-            "version": "v2.4.9",
+            "version": "v2.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/di.git",
-                "reference": "25437788ff126d0ae6b1f2f684ecdd823812abba"
+                "reference": "a4b3be935b755f23aebea1ce33d7e3c832cdff98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/di/zipball/25437788ff126d0ae6b1f2f684ecdd823812abba",
-                "reference": "25437788ff126d0ae6b1f2f684ecdd823812abba",
+                "url": "https://api.github.com/repos/nette/di/zipball/a4b3be935b755f23aebea1ce33d7e3c832cdff98",
+                "reference": "a4b3be935b755f23aebea1ce33d7e3c832cdff98",
                 "shasum": ""
             },
             "require": {
@@ -728,9 +728,18 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "Nette Dependency Injection Component",
+            "description": "💎 Nette Dependency Injection Container: Flexible, compiled and full-featured DIC with perfectly usable autowiring and support for all new PHP 7.1 features.",
             "homepage": "https://nette.org",
-            "time": "2017-07-11T17:55:11+00:00"
+            "keywords": [
+                "compiled",
+                "di",
+                "dic",
+                "factory",
+                "ioc",
+                "nette",
+                "static"
+            ],
+            "time": "2017-08-31T22:42:00+00:00"
         },
         {
             "name": "nette/finder",
@@ -1973,16 +1982,16 @@
         },
         {
             "name": "tharos/leanmapper",
-            "version": "v3.1.1",
+            "version": "dev-fix-union",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Tharos/LeanMapper.git",
-                "reference": "ad4dbf6870ccc2dffa176f0ca8366b992e2a957a"
+                "url": "https://github.com/keyBeatz/LeanMapper.git",
+                "reference": "308ecebd75d80f2ce1de24f98f79e23ee0a3645b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Tharos/LeanMapper/zipball/ad4dbf6870ccc2dffa176f0ca8366b992e2a957a",
-                "reference": "ad4dbf6870ccc2dffa176f0ca8366b992e2a957a",
+                "url": "https://api.github.com/repos/keyBeatz/LeanMapper/zipball/308ecebd75d80f2ce1de24f98f79e23ee0a3645b",
+                "reference": "308ecebd75d80f2ce1de24f98f79e23ee0a3645b",
                 "shasum": ""
             },
             "require": {
@@ -2001,7 +2010,6 @@
                     "LeanMapper": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2015,22 +2023,25 @@
                     "role": "Maintainer"
                 }
             ],
-            "description": "Tiny ORM based on powerful dibi database abstraction library for PHP 5.",
+            "description": "Tiny ORM based on powerful dibi database abstraction library for PHP.",
             "homepage": "http://www.leanmapper.com",
-            "time": "2016-07-10T09:10:35+00:00"
+            "support": {
+                "source": "https://github.com/keyBeatz/LeanMapper/tree/fix-union"
+            },
+            "time": "2017-09-14 07:19:52"
         },
         {
             "name": "tracy/tracy",
-            "version": "v2.4.9",
+            "version": "v2.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tracy.git",
-                "reference": "efe45da0aa3a50ce5356be39f2168d7925d94f3d"
+                "reference": "5b302790edd71924dfe4ec44f499ef61df3f53a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tracy/zipball/efe45da0aa3a50ce5356be39f2168d7925d94f3d",
-                "reference": "efe45da0aa3a50ce5356be39f2168d7925d94f3d",
+                "url": "https://api.github.com/repos/nette/tracy/zipball/5b302790edd71924dfe4ec44f499ef61df3f53a2",
+                "reference": "5b302790edd71924dfe4ec44f499ef61df3f53a2",
                 "shasum": ""
             },
             "require": {
@@ -2084,7 +2095,7 @@
                 "nette",
                 "profiler"
             ],
-            "time": "2017-08-16T17:13:36+00:00"
+            "time": "2017-10-04T18:43:42+00:00"
         }
     ],
     "packages-dev": [
@@ -2153,7 +2164,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "tharos/leanmapper": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

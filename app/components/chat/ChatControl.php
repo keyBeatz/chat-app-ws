@@ -2,6 +2,8 @@
 
 namespace ChatApp\Components;
 
+use App\Presenters\BasePresenter;
+use Model\Query\ConversationQuery;
 use Nette\Application\UI\Control;
 
 class ChatControl extends Control {
@@ -14,6 +16,14 @@ class ChatControl extends Control {
      * @var IChatWindowControlFactory
      */
     private $chatWindowsControl;
+    /**
+     * @var ConversationQuery
+     */
+    private $conversationQuery;
+
+    private $userConversations;
+
+    private $currentUserId;
 
     /**
      * ChatControl constructor.
@@ -23,33 +33,47 @@ class ChatControl extends Control {
      */
     function __construct(
         IChatConversationControlFactory $chatConversationControl,
-        IChatWindowControlFactory $chatWindowsControl
+        IChatWindowControlFactory $chatWindowsControl,
+        ConversationQuery $conversationQuery
     ) {
         parent::__construct();
 
         $this->chatConversationControl = $chatConversationControl;
         $this->chatWindowsControl = $chatWindowsControl;
+        $this->conversationQuery = $conversationQuery;
     }
 
     /**
      * @return ChatConversationControl
      */
     protected function createComponentConversations(): ChatConversationControl {
-        return $this->chatConversationControl->create();
+        return $this->chatConversationControl->create( $this->userConversations, $this->currentUserId );
     }
 
     /**
      * @return ChatWindowControl
      */
     protected function createComponentWindow(): ChatWindowControl {
-        return $this->chatWindowsControl->create();
+        $conversation = null;
+        if( count($this->userConversations) ) {
+            $conversation = reset( $this->userConversations );
+        }
+
+        return $this->chatWindowsControl->create( $conversation, $this->currentUserId );
+    }
+
+    protected function attached( $presenter ) {
+        $this->currentUserId = $presenter->getUserId();
+        $this->userConversations = $this->conversationQuery->getUserConversations( $this->currentUserId );
     }
 
     /**
      * @return void
      */
     public function render(): void {
+
         $template = $this->createTemplate();
+
         $template->setFile( __DIR__ . '/templates/ChatControl.latte' );
         $template->render();
     }

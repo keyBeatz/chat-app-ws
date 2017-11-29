@@ -14,8 +14,26 @@ session:
 services:
 	router: App\RouterFactory::createRouter
 
+	- Model\Mapper\StandardMapper # custom mapper extension
+	- LeanMapper\DefaultEntityFactory
+
 	# components
 	- ChatApp\Components\IChatControlFactory
 	- ChatApp\Components\IChatConversationControlFactory
 	- ChatApp\Components\IChatWindowControlFactory
 	- ChatApp\Components\IChatSendFormFactory
+
+	# commands
+
+	# queries
+	- Model\Query\ConversationQuery
+
+	# repositories
+	- Model\Repository\ConversationMemberRepository
+	- Model\Repository\ConversationRepository
+	- Model\Repository\MessageRepository
+	- Model\Repository\UserRepository
+
+
+extensions:
+    leanMapper: LeanMapper\DI\LeanMapperExtension

@@ -10,7 +10,7 @@ use LeanMapper;
  * @property string $text
  * @property DateTime $dateSent
  * @property DateTime $dateEdited
- * @property-read int $user_id
+ * @property-read int $userId
  * @property Conversation $conversation m:hasOne(conversation_id:conversation)
  * @property User $user m:hasOne(user_id:user)
  */
