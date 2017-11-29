@@ -9,33 +9,25 @@ Prepare app files
 
 	composer update
 	bower install
-	mkdir temp log && chmod -R a+rw temp log
+	mkdir temp log 
+	chmod -R a+rw temp log
 	
-Create database
+Create database from chat_app.sql and set correct credentials in config.local.neon (copy config.local.example.neon)
 
 
-Web Server Setup
+WebSockets setup
 ----------------
 
-The simplest way to get started is to start the built-in PHP server in the root directory of your project:
+After everything is prepared you can startup the websockets server. If you made changes like added new dependencies in websockets controller you must flush cache.
 
-	php -S localhost:8000 -t www
+	php bin/WebSockets/server.php
 
-Then visit `http://localhost:8000` in your browser to see the welcome page.
 
-For Apache or Nginx, setup a virtual host to point to the `www/` directory of the project and you
-should be ready to go.
+Testing guide
+----------------
 
-**It is CRITICAL that whole `app/`, `log/` and `temp/` directories are not accessible directly
-via a web browser. See [security warning](https://nette.org/security-warning).**
+There are several static accounts and you can activate them by choosing appropriate url.
 
-Notice: Composer PHP version
-----------------------------
-This project forces `PHP 5.6` as your PHP version for Composer packages. If you have newer version on production you should change it in `composer.json`.
-```json
-"config": {
-	"platform": {
-		"php": "7.0"
-	}
-}
-```
+Default is user with id 7. You can open new browser window and add userId parameter (eg. http://pathToChatApp/?userId=8) and then start chatting.
+
+You can find all available users in user table.
