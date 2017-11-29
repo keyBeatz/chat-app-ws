@@ -4,16 +4,32 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 
+    <link rel="stylesheet" href="{$baseUrl}/assets/libs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{$baseUrl}/assets/libs/bootstrap/dist/css/bootstrap-theme.min.css">
+
 	<title>{ifset title}{include title|stripHtml} | {/ifset}Nette Web</title>
 </head>
 
 <body>
 	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
 
-	{include content}
+
+    <div class="jumbotron text-center">
+        <h1>Simple Chat Application</h1>
+        <p>For demonstration purposes</p>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            {include content}
+        </div>
+    </div>
+
 
 	{block scripts}
 	<script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
+	<script src="{$baseUrl}/assets/libs/jquery/dist/jquery.min.js"></script>
+	<script src="{$baseUrl}/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
 	{/block}
 </body>
 </html>
