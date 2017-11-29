@@ -1,0 +1,101 @@
+$borderRadiusDefault: 3px;
+$chatAppHeight: 500px;
+$defaultSpacer: 10px;
+
+#chat {
+  background: #eee;
+  position: relative;
+  height: $chatAppHeight;
+  margin-bottom: 50px;
+
+  .chatConversations {
+    background: #dcdcdc;
+    height: $chatAppHeight;
+
+    > ul {
+      list-style: none;
+      margin-bottom: 0;
+      padding-left: 0;
+
+      > li {
+        padding: 25px 10px;
+        border-bottom: 1px solid #ccc;
+
+        &.active {
+          background: #ccc;
+        }
+      }
+    }
+  }
+
+  .chatWindow {
+
+    > ul.chatMessages {
+      list-style: none;
+      margin-bottom: 0;
+      padding-left: 0;
+      height: ( $chatAppHeight / 100 ) * 90;
+
+      > li {
+
+        .message {
+          background: #ccc;
+          margin-bottom: 10px;
+          padding: 10px 10px;
+          margin: 15px;
+          border-radius: $borderRadiusDefault;
+          display: inline-block;
+        }
+
+        &.right  {
+          text-align: right;
+
+          .message {
+            margin-left: 15px;
+          }
+        }
+      }
+    }
+
+    .sendMessage {
+      height: ( $chatAppHeight / 100 ) * 10;
+      padding: 10px 10px;
+    }
+  }
+}
+
+.sendMessage {
+
+  input.messageText {
+    width: 80%;
+    height: 100%;
+    float: left;
+    border: none;
+    border-top-left-radius: $borderRadiusDefault;
+    border-bottom-left-radius: $borderRadiusDefault;
+  }
+  input.messageSend {
+    width: 20%;
+    float: right;
+    height: 100%;
+    background: #2ca7e8;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    border-top-right-radius: $borderRadiusDefault;
+    border-bottom-right-radius: $borderRadiusDefault;
+  }
+}
+
+.nopad {
+  &:not(:first-child,:last-child) {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  &:first-child {
+    padding-right: 0;
+  }
+  &:last-child {
+    padding-left: 0;
+  }
+}

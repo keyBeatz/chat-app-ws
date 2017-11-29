@@ -1,0 +1,64 @@
+#chat {
+  background: #eee;
+  position: relative;
+  height: 500px;
+  margin-bottom: 50px; }
+  #chat .chatConversations {
+    background: #dcdcdc;
+    height: 500px; }
+    #chat .chatConversations > ul {
+      list-style: none;
+      margin-bottom: 0;
+      padding-left: 0; }
+      #chat .chatConversations > ul > li {
+        padding: 25px 10px;
+        border-bottom: 1px solid #ccc; }
+        #chat .chatConversations > ul > li.active {
+          background: #ccc; }
+  #chat .chatWindow > ul.chatMessages {
+    list-style: none;
+    margin-bottom: 0;
+    padding-left: 0;
+    height: 450px; }
+    #chat .chatWindow > ul.chatMessages > li .message {
+      background: #ccc;
+      margin-bottom: 10px;
+      padding: 10px 10px;
+      margin: 15px;
+      border-radius: 3px;
+      display: inline-block; }
+    #chat .chatWindow > ul.chatMessages > li.right {
+      text-align: right; }
+      #chat .chatWindow > ul.chatMessages > li.right .message {
+        margin-left: 15px; }
+  #chat .chatWindow .sendMessage {
+    height: 50px;
+    padding: 10px 10px; }
+
+.sendMessage input.messageText {
+  width: 80%;
+  height: 100%;
+  float: left;
+  border: none;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px; }
+.sendMessage input.messageSend {
+  width: 20%;
+  float: right;
+  height: 100%;
+  background: #2ca7e8;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px; }
+
+.nopad:not(:first-child, :last-child) {
+  padding-right: 0;
+  padding-left: 0; }
+.nopad:first-child {
+  padding-right: 0; }
+.nopad:last-child {
+  padding-left: 0; }
+
+/*# sourceMappingURL=style.css.map */
