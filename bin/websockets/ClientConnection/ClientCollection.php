@@ -9,7 +9,7 @@ use React\EventLoop\LoopInterface;
 
 /**
  * Class ClientCollection
- * @package AllStars\WebSockets
+ * @package ChatApp\WebSockets
  */
 class ClientCollection implements \Countable {
 

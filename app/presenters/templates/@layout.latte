@@ -28,9 +28,16 @@
 
 
 	{block scripts}
+    <script>
+        globalInfo = {
+            currentUserId: {$presenter->getUserId()}
+        };
+    </script>
 	<script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
 	<script src="{$baseUrl}/assets/libs/jquery/dist/jquery.min.js"></script>
 	<script src="{$baseUrl}/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="{$baseUrl}/assets/js/wsh.js"></script>
+	<script src="{$baseUrl}/assets/js/app.js"></script>
 	{/block}
 </body>
 </html>

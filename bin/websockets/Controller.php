@@ -39,6 +39,13 @@ class Controller implements IController, IControllerLoop {
         $this->sendResponse( $client, [ "data" => count( $this->clients ), "user_id" => $userConnection->getUserId()] );
     }
 
+    public function actionSendMessage( IClientConnection $client, array $data ) {
+        $userConnection = $this->clients->getClientByConnection( $client );
+
+
+        $this->sendResponse( $client, [ "data" => count( $this->clients ), "user_id" => $userConnection->getUserId()] );
+    }
+
     public function actionInit( IClientConnection $client, array $data ) {
         $userId = $data['data']['user_id'] ?? 0;
 

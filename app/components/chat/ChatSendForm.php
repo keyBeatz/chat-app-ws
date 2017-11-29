@@ -7,6 +7,11 @@ use Nette\Application\UI\Form;
 
 class ChatSendForm extends Control {
 
+    /**
+     * @var
+     */
+    private $conversation;
+
     function __construct() {
         parent::__construct();
     }
@@ -15,7 +20,6 @@ class ChatSendForm extends Control {
         $form = new Form();
 
         $form->addText( "message", "Zpráva" );
-
         $form->addSubmit( "submit" );
 
         return $form;
