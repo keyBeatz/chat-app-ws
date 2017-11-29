@@ -1,0 +1,16 @@
+
+parameters:
+    database:
+        host: localhost
+        username: root
+        password:
+        database: chat_app
+        lazy: TRUE
+
+leanMapper:
+        driver: mysqli
+        host: localhost
+        username: root
+        password:
+        database: chat_app
+        profiler: true
