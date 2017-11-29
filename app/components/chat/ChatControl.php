@@ -26,6 +26,10 @@ class ChatControl extends Control {
     private $currentUserId;
 
     private $conversationId;
+    /**
+     * @var IChatSendFormFactory
+     */
+    private $sendFormFactory;
 
     /**
      * ChatControl constructor.
@@ -36,6 +40,7 @@ class ChatControl extends Control {
     function __construct(
         IChatConversationControlFactory $chatConversationControl,
         IChatWindowControlFactory $chatWindowsControl,
+        IChatSendFormFactory $sendFormFactory,
         ConversationQuery $conversationQuery
     ) {
         parent::__construct();
@@ -43,6 +48,7 @@ class ChatControl extends Control {
         $this->chatConversationControl = $chatConversationControl;
         $this->chatWindowsControl = $chatWindowsControl;
         $this->conversationQuery = $conversationQuery;
+        $this->sendFormFactory = $sendFormFactory;
     }
 
     /**
@@ -72,6 +78,10 @@ class ChatControl extends Control {
         }
 
         return $this->chatWindowsControl->create( $conversation, $this->currentUserId );
+    }
+
+    protected function createComponentSendForm(): ChatSendForm {
+        return $this->sendFormFactory->create();
     }
 
     protected function attached( $presenter ) {

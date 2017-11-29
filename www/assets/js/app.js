@@ -45,9 +45,14 @@ var App = (function() {
             }
 
         });
-        this.wsh.core.on( "receiveMessage", function( data ) {
-            var data = e.detail.data;
-            console.log(data);
+        this.wsh.core.on( "receivemessage", function( e ) {
+            var data = e.detail.data || {};
+            $.each( data, function( i, v ) {
+                var template = $(v);
+                $("#chatWindow-" + i).html( template.html() );
+            });
+            console.log(e);
+            //console.log(data);
         });
     };
     App.prototype.receiveMessages = function() {

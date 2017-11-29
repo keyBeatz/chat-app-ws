@@ -30,7 +30,7 @@ $defaultSpacer: 10px;
 
   .chatWindow {
 
-    > ul.chatMessages {
+    ul.chatMessages {
       list-style: none;
       margin-bottom: 0;
       padding-left: 0;
@@ -73,6 +73,7 @@ $defaultSpacer: 10px;
     border: none;
     border-top-left-radius: $borderRadiusDefault;
     border-bottom-left-radius: $borderRadiusDefault;
+    padding: 0 7px;
   }
   input.messageSend {
     width: 20%;

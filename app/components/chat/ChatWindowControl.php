@@ -8,10 +8,6 @@ use Nette\Application\UI\Control;
 class ChatWindowControl extends Control {
 
     /**
-     * @var IChatSendFormFactory
-     */
-    private $sendFormFactory;
-    /**
      * @var ConversationMember
      */
     private $conversation;
@@ -22,17 +18,11 @@ class ChatWindowControl extends Control {
 
     function __construct(
         ConversationMember $conversation,
-        int $currentUserId,
-        IChatSendFormFactory $sendFormFactory
+        int $currentUserId
     ) {
         parent::__construct();
         $this->conversation = $conversation;
-        $this->sendFormFactory = $sendFormFactory;
         $this->currentUserId = $currentUserId;
-    }
-
-    protected function createComponentSendForm(): ChatSendForm {
-        return $this->sendFormFactory->create();
     }
 
     /**

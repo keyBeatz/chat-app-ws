@@ -1,4 +1,4 @@
-<div class="chatWindow">
+<div id="chatWindow-{$conversation->conversation->id}">
     <ul n:if="$conversation" n:inner-foreach="$conversation->conversation->messages as $message" class="chatMessages">
         <li n:class="$currentUserId !== $message->userId ? right, $iterator->isFirst() ? active">
             {dump $iterator->isFirst()}
@@ -7,5 +7,4 @@
             </div>
         </li>
     </ul>
-    {control sendForm}
 </div>

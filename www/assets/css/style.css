@@ -15,21 +15,21 @@
         border-bottom: 1px solid #ccc; }
         #chat .chatConversations > ul > li.active {
           background: #ccc; }
-  #chat .chatWindow > ul.chatMessages {
+  #chat .chatWindow ul.chatMessages {
     list-style: none;
     margin-bottom: 0;
     padding-left: 0;
     height: 450px; }
-    #chat .chatWindow > ul.chatMessages > li .message {
+    #chat .chatWindow ul.chatMessages > li .message {
       background: #ccc;
       margin-bottom: 10px;
       padding: 10px 10px;
       margin: 15px;
       border-radius: 3px;
       display: inline-block; }
-    #chat .chatWindow > ul.chatMessages > li.right {
+    #chat .chatWindow ul.chatMessages > li.right {
       text-align: right; }
-      #chat .chatWindow > ul.chatMessages > li.right .message {
+      #chat .chatWindow ul.chatMessages > li.right .message {
         margin-left: 15px; }
   #chat .chatWindow .sendMessage {
     height: 50px;
@@ -41,7 +41,8 @@
   float: left;
   border: none;
   border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px; }
+  border-bottom-left-radius: 3px;
+  padding: 0 7px; }
 .sendMessage input.messageSend {
   width: 20%;
   float: right;

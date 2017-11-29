@@ -2,6 +2,9 @@
 
 namespace ChatApp\WebSockets;
 
+use Latte\Engine;
+use Latte\Runtime\Template;
+use Model\Query\ConversationQuery;
 use Nette\Utils\Strings;
 use Nette\Application\LinkGenerator;
 use ChatApp\WebSockets\Exceptions\ControllerRuntimeException;
@@ -17,13 +20,17 @@ class Controller implements IController, IControllerLoop {
     use ControllerHelperTrait;
 
     const TIMER_SEC = 3;
-
+    /**
+     * @var ConversationQuery
+     */
+    private $conversationQuery;
 
 
     public function __construct (
-
+        ConversationQuery $conversationQuery
     ) {
 
+        $this->conversationQuery = $conversationQuery;
     }
 
     /**
@@ -77,6 +84,28 @@ class Controller implements IController, IControllerLoop {
             $this->sendResponse( $client, ["action"=>"test", "data" => ["test"=>"1111"]] );
         }
     }*/
+
+    private function loopReceiveMessage( ClientCollection $clientCollection ) {
+        echo "loopTest inited\n";
+        echo "Clients: " . count( $clientCollection->getClients() );
+        foreach( $clientCollection->getClients() as $client ) {
+            $currentUserId = $client->getUserId();
+            $unreadConversations = $this->conversationQuery->getUserConversations( $currentUserId, [ 'unread' => 1 ] );
+            if( count( $unreadConversations ) ) {
+                $latte = new Engine();
+                $output = [];
+                foreach( $unreadConversations as $conversation ) {
+                    $params = [
+                        'conversation' => $conversation,
+                        'currentUserId' => $currentUserId
+                    ];
+                    $output[$conversation->conversation->id] = $latte->renderToString( __DIR__ . '/../../app/components/chat/templates/ChatWindow.latte', $params );
+                }
+
+                $this->sendResponse( $client, [ "data" => $output ] );
+            }
+        }
+    }
 
 
 }

@@ -33,9 +33,9 @@ class ConversationQuery {
         $this->userRepository = $userRepository;
     }
 
-    public function getUserConversations( int $userId ) {
+    public function getUserConversations( int $userId, array $args = [] ) {
         $user = $this->userRepository->find( $userId );
-        $conversations = $this->conversationMemberRepository->findByUser( $user->id );
+        $conversations = $this->conversationMemberRepository->findByUser( $user->id, $args );
 
         return $conversations;
     }
