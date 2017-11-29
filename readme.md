@@ -20,7 +20,7 @@ WebSockets setup
 
 After everything is prepared you can startup the websockets server. If you made changes like added new dependencies in websockets controller you must flush cache.
 
-	php bin/WebSockets/server.php
+	php bin/websockets/server.php
 
 
 Testing guide
