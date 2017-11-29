@@ -1,0 +1,9 @@
+.idea
+node_modules
+composer
+vendor
+log
+temp
+www/assets/libs
+*.mwb.bak
+app/config/config.local.neon
