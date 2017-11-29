@@ -2,15 +2,7 @@
 
 namespace App\Presenters;
 
-use AllStars\Components\Panel\ChatPanelControl;
-use AllStars\Components\Panel\IPanelCommentsControlFactory;
-use AllStars\Components\RegionGame\IRegionGameFilterControlFactory;
-use AllStars\Components\User\IRegisterControlFactory;
-use AllStars\Components\Widget\ISearchControlFactory;
-use AllStars\Components\RightPanelControl;
 use LeanMapper\Connection;
-use Model\Repository\UserRepository;
-use Model\Repository\UserLogRepository;
 use Nette;
 
 

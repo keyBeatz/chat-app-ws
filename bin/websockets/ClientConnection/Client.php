@@ -23,7 +23,7 @@ class Client implements IClientConnection {
      */
     private $resourceId;
     /**
-     * @var int id of user in allstars system
+     * @var int
      */
     private $userId;
 

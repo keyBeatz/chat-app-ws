@@ -2,7 +2,6 @@
 
 namespace Model\Entity;
 
-use AllStars\Components\Forum\IForumAddThreadControlFactory;
 use Dibi\DateTime;
 use LeanMapper;
 
@@ -17,7 +16,7 @@ use LeanMapper;
  * @property string $firstname
  * @property string $lastname
  * @property-read int|null $rating m:useMethods
- * @property-read \DateTime $dateRegistered
+ * @property-read DateTime $dateRegistered
  */
 class User extends LeanMapper\Entity {
 
