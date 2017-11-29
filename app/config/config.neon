@@ -24,6 +24,7 @@ services:
 	- ChatApp\Components\IChatSendFormFactory
 
 	# commands
+	- Model\Command\ConversationCommand
 
 	# queries
 	- Model\Query\ConversationQuery

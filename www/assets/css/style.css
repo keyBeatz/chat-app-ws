@@ -19,7 +19,8 @@
     list-style: none;
     margin-bottom: 0;
     padding-left: 0;
-    height: 450px; }
+    height: 450px;
+    overflow-y: scroll; }
     #chat .chatWindow ul.chatMessages > li .message {
       background: #ccc;
       margin-bottom: 10px;

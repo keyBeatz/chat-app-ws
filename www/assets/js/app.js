@@ -5,10 +5,17 @@ var App = (function() {
     }
     App.prototype.init = function() {
         var self = this;
-
+        this.ui();
         this.initWSH(function() {
             self.events();
         });
+    };
+    App.prototype.ui = function() {
+        this.scrollChatWindow();
+    };
+    App.prototype.scrollChatWindow = function() {
+        var container = this.wrap.find( ".chatMessages" );
+        container.scrollTop(container.prop('scrollHeight'));
     };
     App.prototype.initWSH = function( callback ) {
         this.wsh = new WSH({
@@ -29,7 +36,9 @@ var App = (function() {
             e.preventDefault();
 
             var form = $(this).closest( "form" );
-            var message = form.find( ".messageText" ).val();
+            var messageTextInput = form.find( ".messageText" );
+            var message = messageTextInput.val();
+            messageTextInput.val("");
 
             console.log( form );
             console.log( message );
@@ -44,12 +53,17 @@ var App = (function() {
                 self.wsh.core.send( "sendMessage", data );
             }
 
+
+
         });
         this.wsh.core.on( "receivemessage", function( e ) {
             var data = e.detail.data || {};
             $.each( data, function( i, v ) {
                 var template = $(v);
                 $("#chatWindow-" + i).html( template.html() );
+                self.scrollChatWindow();
+
+                self.wrap.find( ".chatConversations li[data-conversation_id='"+ i +"'] > a" ).text( template.find("li:last-child").text() );
             });
             console.log(e);
             //console.log(data);

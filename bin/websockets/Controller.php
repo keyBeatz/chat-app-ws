@@ -4,6 +4,7 @@ namespace ChatApp\WebSockets;
 
 use Latte\Engine;
 use Latte\Runtime\Template;
+use Model\Command\ConversationCommand;
 use Model\Query\ConversationQuery;
 use Nette\Utils\Strings;
 use Nette\Application\LinkGenerator;
@@ -24,13 +25,19 @@ class Controller implements IController, IControllerLoop {
      * @var ConversationQuery
      */
     private $conversationQuery;
+    /**
+     * @var ConversationCommand
+     */
+    private $conversationCommand;
 
 
     public function __construct (
-        ConversationQuery $conversationQuery
+        ConversationQuery $conversationQuery,
+        ConversationCommand $conversationCommand
     ) {
 
         $this->conversationQuery = $conversationQuery;
+        $this->conversationCommand = $conversationCommand;
     }
 
     /**
@@ -48,6 +55,15 @@ class Controller implements IController, IControllerLoop {
 
     public function actionSendMessage( IClientConnection $client, array $data ) {
         $userConnection = $this->clients->getClientByConnection( $client );
+        $userId = $userConnection->getUserId();
+        $conversationId = $data['data']['conversationId'] ?? null;
+        $message = $data['data']['message'] ?? "";
+
+        if( $userId && $conversationId && $message ) {
+            var_dump($message);
+            $this->conversationCommand->addMessage( $conversationId, $userId, $message );
+        }
+        print json_encode($data);
 
 
         $this->sendResponse( $client, [ "data" => count( $this->clients ), "user_id" => $userConnection->getUserId()] );
