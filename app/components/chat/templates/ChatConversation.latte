@@ -1,6 +1,7 @@
 <div class="chatConversations">
-    <ul n:if="$conversations" n:inner-foreach="$conversations as $conversation">
-        <li n:class="$activeConversationId == $conversation->conversation->id ? active, !$activeConversationId && $iterartor->isFirst() ? active, conversation" data-conversation_id="{$conversation->conversation->id}">
+    <ul n:if="!empty($conversations)">
+        {foreach $conversations as $conversation}
+        <li n:class="$activeConversationId == $conversation->conversation->id ? active, !$activeConversationId && $iterator->isFirst() ? active, conversation" data-conversation_id="{$conversation->conversation->id}">
             <a href="{plink switchConversation! conversationId => $conversation->conversation->id}">
                 <div class="avatar"></div>
                 <span class="lastMessageText">
@@ -8,5 +9,6 @@
                 </span>
             </a>
         </li>
+        {/foreach}
     </ul>
 </div>
